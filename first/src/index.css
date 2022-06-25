@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  justify-content: space-between;
+}
+nav {
+  display: flex;
+}
+.nav-ul {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 10px;
+}
