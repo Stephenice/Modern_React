@@ -1,7 +1,6 @@
 import React from "react";
 
 function ApprovalCard(props) {
-  console.log(props);
   return (
     <>
       <div className="ui cards">
