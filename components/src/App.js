@@ -7,8 +7,11 @@ export default function App() {
     <>
       <div className="ui comments container">
         <h3 className="ui dividing header">Comments</h3>
-        {/* reuseable comments */}
-
+        {/* reuseable component */}
+        <ApprovalCard>
+          <h1>Warning</h1>
+          <p>Are you sure you want to do this?</p>
+        </ApprovalCard>
         <ApprovalCard>
           <CommentDetail
             author="sam"
