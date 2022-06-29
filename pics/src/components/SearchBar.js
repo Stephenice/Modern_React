@@ -2,10 +2,11 @@ import React from "react";
 
 export default class SearchBar extends React.Component {
   // state...
+  state = { term: " " };
 
-  onInputChange(event) {
-    console.log(event.target.value);
-  }
+  // onInputChange(event) {
+  //   console.log(event.target.value);
+  // }
 
   render() {
     return (
@@ -13,7 +14,11 @@ export default class SearchBar extends React.Component {
         <form className="ui form">
           <div className="field">
             <label>User Input</label>
-            <input type="text" onChange={this.onInputChange} />
+            <input
+              type="text"
+              value={this.state.term}
+              onChange={(e) => this.setState({ term: e.target.value })}
+            />
           </div>
         </form>
       </div>
