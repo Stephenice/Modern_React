@@ -1,5 +1,7 @@
 import "./App.css";
 import { Component } from "react";
+import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
 
 /**
  * life cycle method
@@ -30,31 +32,29 @@ class App extends Component {
       );
   }
 
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => ({ searchField }));
+  };
+
   render() {
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+
     // filter
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
     });
 
     return (
       <div className="App">
-        <input
-          type="search"
+        <h1 className="app-title"> monsters Rolodex</h1>
+        <SearchBox
+          onChangeHandle={onSearchChange}
           className="search-box"
           placeholder="search monsters"
-          onChange={(event) => {
-            const searchField = event.target.value.toLocaleLowerCase();
-            this.setState(() => ({ searchField }));
-          }}
         />
-
-        {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
